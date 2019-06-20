@@ -47,3 +47,14 @@ describe('fail function', () => {
         expect(enhancer.fail(item).enhancement).toBe(19)
     })
 })
+
+describe('get function', () => {
+    it('if enhancement is 0, nothing changes', () => {
+        const item = {...stick, enhancement: 0}
+        expect(enhancer.get(item)).toBe(item)
+    })
+    it('if enhancement is greater than 0, name includes enhancement "[+7] name"', () => {
+        const item = {...stick, name: 'stick', enhancement: 1}
+        expect(enhancer.get(item).name).toBe('[+1] stick')
+    })
+})
